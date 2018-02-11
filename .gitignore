@@ -1,0 +1,4 @@
+# Ignore all .rs files in src/ except for lib.rs and main.rs
+/src/*.rs
+!/src/lib.rs
+!/src/main.rs

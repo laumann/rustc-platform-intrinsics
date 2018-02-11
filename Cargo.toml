@@ -1,0 +1,14 @@
+[package]
+name = "rustc-platform-intrinsics"
+version = "0.0.0"
+authors = ["Thomas Jespersen <laumann.thomas@gmail.com>"]
+build = "build.rs"
+
+[lib]
+name ="rustc_platform_intrinsics"
+crate-type = ["dylib"]
+
+[build-dependencies.platform-intrinsics]
+path = "platform-intrinsics"
+version = "0.0.0"
+

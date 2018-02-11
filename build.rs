@@ -1,12 +1,9 @@
 extern crate platform_intrinsics;
 
 use platform_intrinsics::IntrinsicsInput;
-use std::io::Write;
 use std::fs::File;
 
 fn main() {
-    println!("Hello, build.rs");
-    println!("cargo:warning=Hello, build.rs");
 
     let arm = IntrinsicsInput::single("arch/arm.json");
 
@@ -34,8 +31,11 @@ fn main() {
                                     
 
     for (output, input) in intrinsics {
-        let mut o = File::create(output).expect("Unable to create file");
-        platform_intrinsics::generate(input, &mut o);
+        let mut o = File::create(output)
+            .expect("Unable to create file '{}'", output);
+
+        platform_intrinsics::generate(input, &mut o)
+            .expect(&format!("Unable to generate '{}'", output));
     }
 
 }

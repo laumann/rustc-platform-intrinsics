@@ -28,11 +28,10 @@ fn main() {
         ("src/arm.rs", arm),
         ("src/x86.rs", x86),
     ];
-                                    
 
     for (output, input) in intrinsics {
         let mut o = File::create(output)
-            .expect("Unable to create file '{}'", output);
+            .expect(&format!("Unable to create file '{}'", output));
 
         platform_intrinsics::generate(input, &mut o)
             .expect(&format!("Unable to generate '{}'", output));

@@ -25,8 +25,15 @@ fn main() {
     ]);
 
     let intrinsics = vec![
-        ("src/arm.rs", arm),
         ("src/x86.rs", x86),
+        ("src/arm.rs", arm),
+        ("src/aarch64.rs", IntrinsicsInput::single("arch/aarch64.json")),
+        ("src/nvptx.rs", IntrinsicsInput::multi("arch/nvptx/info.json", vec![
+                                                    "arch/nvptx/cuda.json",
+                                                    "arch/nvptx/sreg.json",
+                                                ])),
+        ("src/hexagon.rs", IntrinsicsInput::single("arch/hexagon/hvx_v60.json")),
+        ("src/powerpc.rs", IntrinsicsInput::single("arch/powerpc.json")),
     ];
 
     for (output, input) in intrinsics {
